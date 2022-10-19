@@ -149,6 +149,14 @@ function selectOption() {
 // Ecran 4
 
 function suivantEcran3() {
+    if (inputNb.value > 0) {
+        btEcran2.removeAttribute('disabled');
+        nbAnnonce = inputNb.value;
+    } else {
+        btEcran2.setAttribute('disabled', '')
+        nbAnnonce = 0;
+    }
+
     let annonceRecap = document.getElementById("annonceRecap");
     let annonceFinal = document.getElementById(annonceSelect);
     annonceRecap.innerHTML = annonceFinal.innerHTML;
@@ -169,7 +177,7 @@ function suivantEcran3() {
     }
 
     prixSansOption = nbAnnonce * prixAnnonce;
-    prixTotal.innerText = parseFloat(prixSansOption) + parseFloat(prixOption);
+    prixTotal.innerText = (parseFloat(prixSansOption) + parseFloat(prixOption)).toFixed(2);
     finalQuantite.innerText = nbAnnonce;
     todayDate.innerText = today;
     if ((annonceFinal.getElementsByTagName("h3")[0].innerText) == '1 An') {
